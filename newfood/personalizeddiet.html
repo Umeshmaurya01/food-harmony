@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navigation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/personalizeddiet.css">
+    <link rel="stylesheet" href="css/footer.css">
+
+
+        <!-- Add this line to include Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+       
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><img src="images/lg11.png" alt=""></div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="service.html">Service</a></li>
+                <!-- <li><a href="#gallery">Our Gallery</a></li> -->
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="containerss">
+    
+<!-- Loading Overlay -->
+<div id="loading-overlay" class="loading-overlay hidden">
+    <div class="spinner"></div>
+    <p>Creating your personalized nutrition journey...</p>
+</div>
+
+<!-- Main Content -->
+<div id="main-content">
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Transform Your Health Journey</h1>
+            <p class="subtitle">AI-Powered Personalized Nutrition Plans</p>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <i class="fas fa-users"></i>
+                    <span>50,000+ Success Stories</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>95% Goal Achievement</span>
+                </div>
+            </div>
+            <button class="cta-button" onclick="showNutritionPlanOptions()">
+                <i class="fas fa-rocket"></i> Start Your Journey
+            </button>
+        </div>
+    </header>
+
+    <!-- Features Overview -->
+    <section class="features-section">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Smart Planning</h3>
+                    <p>AI-driven meal recommendations based on your preferences</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Flexible Duration</h3>
+                    <p>Plans from 1 day to 1 year with milestone tracking</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-pie"></i>
+                    <h3>Nutrition Balance</h3>
+                    <p>Perfect macro and micronutrient distribution</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plan Selection Section -->
+    <section id="plan-options" class="hidden">
+        <div class="container">
+            <h2>Choose Your Nutrition Journey</h2>
+            <div class="plan-cards">
+                <div class="plan-card" data-plan="Simple">
+                    <div class="plan-icon"><i class="fas fa-seedling"></i></div>
+                    <h3>Simple Plan</h3>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Basic meal recommendations</li>
+                        <li><i class="fas fa-check"></i> Weekly meal plans</li>
+                        <li><i class="fas fa-check"></i> Shopping lists</li>
+                        <li><i class="fas fa-check"></i> Basic tracking tools</li>
+                    </ul>
+                    <button onclick="selectPlan('Simple')" class="select-button">Select Simple Plan</button>
+                </div>
+
+                <div class="plan-card featured" data-plan="Intermediate">
+                    <div class="plan-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Intermediate Plan</h3>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Advanced meal planning</li>
+                        <li><i class="fas fa-check"></i> Calorie tracking</li>
+                        <li><i class="fas fa-check"></i> Nutrition analytics</li>
+                        <li><i class="fas fa-check"></i> Customized portions</li>
+                    </ul>
+                    <button onclick="selectPlan('Intermediate')" class="select-button">Select Intermediate Plan</button>
+                </div>
+
+                <div class="plan-card" data-plan="Advanced">
+                    <div class="plan-icon"><i class="fas fa-crown"></i></div>
+                    <h3>Advanced Plan</h3>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Custom macro tracking</li>
+                        <li><i class="fas fa-check"></i> Meal timing optimization</li>
+                        <li><i class="fas fa-check"></i> Advanced analytics</li>
+                        <li><i class="fas fa-check"></i> Supplement guidance</li>
+                    </ul>
+                    <button onclick="selectPlan('Advanced')" class="select-button">Select Advanced Plan</button>
+                </div>
+            </div>
+
+            <!-- Plan Customization Form -->
+            <div id="plan-customization" class="hidden">
+                <h3 class="plannn">Customize Your Plan</h3>
+                <div class="form-container">
+                    <div class="form-group">
+                        <label for="duration">Plan Duration</label>
+                        <select id="duration" required>
+                            <option value="">Select Duration</option>
+                            <option value="7">1 Week</option>
+                            <option value="30">1 Month</option>
+                            <option value="90">3 Months</option>
+                            <option value="180">6 Months</option>
+                            <option value="365">1 Year</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="diet-type">Dietary Preference</label>
+                        <select id="diet-type" required>
+                            <option value="">Select Diet Type</option>
+                            <option value="vegan">Vegan</option>
+                            <option value="vegetarian">Vegetarian</option>
+                            <option value="paleo">Paleo</option>
+                            <option value="keto">Keto</option>
+                            <option value="balanced">Balanced</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="goal">Primary Goal</label>
+                        <select id="goal" required>
+                            <option value="">Select Goal</option>
+                            <option value="weight-loss">Weight Loss</option>
+                            <option value="muscle-gain">Muscle Gain</option>
+                            <option value="maintenance">Maintenance</option>
+                            <option value="health">General Health</option>
+                        </select>
+                    </div>
+
+                    <button onclick="generatePlan()" class="generate-button">
+                        <i class="fas fa-wand-magic-sparkles"></i> Generate My Plan
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Generated Plan Display -->
+    <section id="generated-plan" class="hidden">
+        <div class="container">
+            <div class="plan-header">
+                <h2>Your Personalized Nutrition Plan</h2>
+                <div class="plan-meta">
+                    <span id="plan-type-display"></span>
+                    <span id="plan-duration-display"></span>
+                    <span id="plan-goal-display"></span>
+                </div>
+            </div>
+
+            <div class="progress-tracker">
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+                <div id="milestone-markers" class="milestone-markers"></div>
+            </div>
+
+            <div id="plan-details" class="plan-content">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+
+            <div class="action-buttons">
+                <button onclick="downloadPlan()" class="action-button">
+                    <i class="fas fa-download"></i> Download Plan
+                </button>
+                <button onclick="resetPlan()" class="action-button secondary">
+                    <i class="fas fa-redo"></i> Start Over
+                </button>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+
+</div>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modern Footer Section -->
+<footer class="fotr-wrapper">
+    <!-- Footer Top Wave -->
+    <!-- <div class="fotr-wave">
+        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,96L48,85.3C96,75,192,53,288,53.3C384,53,480,75,576,90.7C672,107,768,117,864,112C960,107,1056,85,1152,74.7C1248,64,1344,64,1392,64L1440,64L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z" fill="currentColor"/>
+        </svg>
+    </div> -->
+
+    <div class="fotr-main">
+        <div class="fotr-container">
+            <!-- Stats Section with New Content -->
+<div class="fotr-stats">
+    <!-- Achievement 1 -->
+    <div class="fotr-stat-item">
+        <span class="fotr-stat-number" data-count="25000">25,000+</span>
+        <span class="fotr-stat-label">Meals Delivered</span>
+        <p class="fotr-stat-desc">Fresh & Healthy Meals</p>
+    </div>
+
+    <!-- Achievement 2 -->
+    <div class="fotr-stat-item">
+        <span class="fotr-stat-number" data-count="50">50+</span>
+        <span class="fotr-stat-label">Expert Nutritionists</span>
+        <p class="fotr-stat-desc">Certified Professionals</p>
+    </div>
+
+    <!-- Achievement 3 -->
+    <div class="fotr-stat-item">
+        <span class="fotr-stat-number" data-count="100">100+</span>
+        <span class="fotr-stat-label">Diet Plans</span>
+        <p class="fotr-stat-desc">Customized Solutions</p>
+    </div>
+</div>
+
+            <!-- Main Footer Grid -->
+            <div class="fotr-grid">
+                <!-- Brand Column -->
+                <div class="fotr-col fotr-brand-col">
+                    <div class="fotr-brand">
+                        <img src="images/logo.png" alt="Food Harmony" class="fotr-logo">
+                        <h2>Food Harmony</h2>
+                    </div>
+                    <p class="fotr-desc">Empowering individuals to achieve optimal health through personalized nutrition guidance and innovative wellness solutions.</p>
+                    <div class="fotr-social">
+                        <a href="#" class="fotr-social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="fotr-social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="fotr-social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="fotr-social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="fotr-col">
+                    <h3 class="fotr-title">Quick Links</h3>
+                    <ul class="fotr-links">
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/services">Our Services</a></li>
+                        <li><a href="/meal-plans">Meal Plans</a></li>
+                        <!-- <li><a href="/blog">Health Blog</a></li> -->
+                        <li><a href="/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources -->
+                <div class="fotr-col">
+                    <h3 class="fotr-title">Resources</h3>
+                    <ul class="fotr-links">
+                        <li><a href="/recipes">Healthy Recipes</a></li>
+                        <li><a href="/nutrition">Nutrition Guide</a></li>
+                        <li><a href="/wellness">Wellness Tips</a></li>
+                        <li><a href="/faq">FAQs</a></li>
+                        <!-- <li><a href="/testimonials">Success Stories</a></li> -->
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="fotr-col fotr-contact-col">
+                    <h3 class="fotr-title">Get in Touch</h3>
+                    <div class="fotr-contact-info">
+                        <div class="fotr-contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Mumbai, Maharashtra, India</p>
+                            </div>
+                        </div>
+                        <div class="fotr-contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email Us</h4>
+                                <a href="mailto:hello@foodharmony.com">hello@foodharmony.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="fotr-bottom">
+                <div class="fotr-copyright">
+                    <p>&copy; <span class="fotr-year">2024</span> Food Harmony. All rights reserved.</p>
+                </div>
+                <div class="fotr-legal">
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms of Use</a>
+                    <a href="/sitemap">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+    <script src="js/navigation.js"></script>
+    <script src="js/personalizeddiet.js"></script>
+    <script src="js/footer.js"></script>
+</body>
+</html>
